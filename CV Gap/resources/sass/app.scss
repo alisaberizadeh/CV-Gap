@@ -1,0 +1,14 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+// Variables
+@import 'variables';
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+@font-face {
+    font-family: 'Vazir';
+    src: url('../fonts/Vazir.ttf') format('truetype');
+}
+
+* {
+    font-family: 'Vazir';
+}
