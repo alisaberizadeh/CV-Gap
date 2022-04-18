@@ -13,31 +13,36 @@ class AdminController extends Controller
         return view("wp.panel");
     }
 
-    public function show_profile()
+    public function profile()
     {
         return view("wp.profile");
     }
-    public function profile_update(Request $request, $id)
+    public function update(Request $request, $id)
     {
 
-
-        if (empty($request->avatar)) {
-            $request->avatar = $request->hidden_src;
-        }
+        
+        
         $date = $request->validate([
             "name" => "required|string|max:255",
+            "bio" => "required|string",
             "email" => "required|email|unique:users,email,$id",
             "mobile" => "required|max:11|string|unique:users,mobile,$id",
             "username" => "required|max:255|string|unique:users,username,$id",
             "avatar" => "image|mimes:jpg,png,jpeg|max:2048",
         ]);
-        $avatar = $request->file('avatar');
-        $avatar->move(public_path('images/upload/') , $avatar->getClientOriginalName());
-        $request->avatar = asset('/images/upload').'/'.$avatar->getClientOriginalName();
+        if (isset($request->avatar)) {
+            $avatar = $request->file('avatar');
+            $avatar->move(public_path('images/upload'), date('Y') . '_' . date('M') . '_' . $avatar->getClientOriginalName());
+            $request->avatar = '/images/upload' . '/' . date('Y') . '_' . date('M') . '_' . $avatar->getClientOriginalName();
+        }
+        else if (empty($request->avatar)) {
+            $request->avatar = $request->hidden_src;
+        }
         $user = User::find($id);
         $user->update([
             "name" => $request->name,
             "email" =>  $request->email,
+            "bio" =>  $request->bio,
             "mobile" =>  $request->mobile,
             "username" => $request->username,
             "avatar" => $request->avatar,

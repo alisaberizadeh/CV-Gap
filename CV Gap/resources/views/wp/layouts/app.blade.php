@@ -6,8 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>ادمین | پنل مدیریت</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 
     <link rel="stylesheet" href="{{ asset('/css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('/css/admin/adminlte.min.css') }}">
@@ -18,11 +19,11 @@
     <script src="{{ asset('/js/admin/adminlte.min.js') }}"></script>
     <script src="{{ asset('/js/admin/demo.js') }}"></script>
     <script src="{{ asset('/js/app.js') }}"></script>
-    
+
 </head>
 
 <body class="hold-transition sidebar-mini">
-        @include('sweet::alert')
+    @include('sweet::alert')
     <div class="wrapper">
         <nav class="main-header navbar navbar-expand bg-white navbar-light border-bottom">
             <!-- Left navbar links -->
@@ -31,7 +32,7 @@
                     <a class="nav-link" data-widget="pushmenu" href="#"><i class="fa fa-bars"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="../../index3.html" class="nav-link">خانه</a>
+                    <a href="/" class="nav-link">خانه</a>
                 </li>
             </ul>
 
@@ -40,7 +41,7 @@
                 <!-- Messages Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="fa fa-comments-o"></i>
+                        <i class="fa fa-comments"></i>
                         <span class="badge badge-danger navbar-badge">3</span>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
@@ -104,8 +105,7 @@
                 <!-- Notifications Dropdown Menu -->
                 <li class="nav-item dropdown">
                     <a class="nav-link" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bell-o"></i>
-                        <span class="badge badge-warning navbar-badge">15</span>
+                        <i class="fa fa-bell"></i>
                     </a>
                     <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
                         <span class="dropdown-item dropdown-header">15 نوتیفیکیشن</span>
@@ -128,6 +128,26 @@
                         <a href="#" class="dropdown-item dropdown-footer">مشاهده همه نوتیفیکیشن</a>
                     </div>
                 </li>
+                <!-- Notifications Dropdown Menu -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fa fa-recycle"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-lg dropdown-menu-left">
+                        <span class="dropdown-item dropdown-header">بازیافت اطلاعات</span>
+                        <div class="dropdown-divider"></div>
+                        <a href="#" class="dropdown-item">
+                            <i class="fa fa-users ml-2"></i> کاربران حذف شده
+                            <span class="badge badge-danger float-left">3</span>
+                        </a>
+                    </div>
+                </li>
+                <li class="nav-item ">
+                    <a class="nav-link" data-toggle="dropdown" href="#">
+                        <i class="fa fa-power-off"></i>
+                    </a>
+
+                </li>
             </ul>
         </nav>
 
@@ -141,7 +161,7 @@
                 <div>
                     <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                         <div class="image">
-                            <img src="{{ asset('/images/avatar.png') }}" class="img-circle elevation-2"
+                            <img src="{{ asset(auth()->user()->avatar) }}" class="img-circle elevation-2"
                                 alt="User Image">
                         </div>
                         <div class="info">
@@ -161,48 +181,45 @@
                                 </a>
                             </li>
                             <li class="nav-item has-treeview">
-                                <a href="{{route('admin.profile')}}" class="nav-link">
-                                    <i class="nav-icon fa fa-user"></i>
+                                <a href="{{ route('admin.profile') }}" class="nav-link">
+                                    <i class="nav-icon fa fa-address-card"></i>
                                     <p>
                                         اطلاعات کاربری
                                     </p>
                                 </a>
                             </li>
-                            {{-- <li class="nav-item has-treeview">
+                            <li class="nav-item has-treeview">
                                 <a href="#" class="nav-link">
-                                    <i class="nav-icon fa fa-user"></i>
+                                    <i class="nav-icon fa fa-users"></i>
                                     <p>
-                                        اطلاعات کاربری
-                                     </p>
+                                        کاربران
+                                        <i class="fa fa-angle-left right"></i>
+                                    </p>
+
                                 </a>
                                 <ul class="nav nav-treeview">
                                     <li class="nav-item">
-                                        <a href="../../index.html" class="nav-link">
-                                            <i class="fa fa-circle-o nav-icon"></i>
-                                            <p>داشبورد اول</p>
+                                        <a href="{{ route('user.new') }}" class="nav-link">
+                                            <i class="fa fa-genderless nav-icon"></i>
+                                            <p>افزودن کاربر جدید</p>
                                         </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="../../index2.html" class="nav-link">
-                                            <i class="fa fa-circle-o nav-icon"></i>
-                                            <p>داشبورد دوم</p>
+                                        <a href="{{ route('user.management') }}" class="nav-link">
+                                            <i class="fa fa-genderless nav-icon"></i>
+                                            <p>مدیریت کاربران</p>
                                         </a>
                                     </li>
-                                    <li class="nav-item">
-                                        <a href="../../index3.html" class="nav-link">
-                                            <i class="fa fa-circle-o nav-icon"></i>
-                                            <p>داشبورد سوم</p>
-                                        </a>
-                                    </li>
+
                                 </ul>
-                            </li> --}}
+                            </li>
 
                         </ul>
                     </nav>
                 </div>
             </div>
         </aside>
-        
+
 
         <div class="content-wrapper">
             @yield('content')
@@ -214,7 +231,7 @@
 
     </div>
 
-    
+
 
 </body>
 

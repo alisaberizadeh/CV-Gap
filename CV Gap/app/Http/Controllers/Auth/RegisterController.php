@@ -72,6 +72,7 @@ class RegisterController extends Controller
             'mobile' => $data['mobile'],
             'is_admin' => 0,
             'avatar' => '/images/avatar.png',
+            'bio' => 'این یک بیوگرافی آزمایشی است.',
             'username' => $data['username'],
             'password' => Hash::make($data['password']),
         ]);

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\User\NormalUserController;
 
 /*
@@ -25,8 +26,22 @@ Auth::routes();
 
 Route::prefix('admin')->middleware('isAdmin')->group(function () {
     Route::get('/panel', [AdminController::class, 'index'])->name('admin.panel');
-    Route::get('/profile', [AdminController::class, 'show_profile'])->name('admin.profile');
-    Route::post('/profile/update/{id}', [AdminController::class, 'profile_update'])->name('admin.profile_update');
+    Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
+    Route::put('/profile/update/{id}', [AdminController::class, 'update'])->name('admin.update');
+
+    Route::get('/users/new', [UsersController::class, 'new'])->name('user.new');
+    Route::post('/users/new', [UsersController::class, 'create'])->name('user.create');
+
+    Route::get('/users', [UsersController::class, 'management'])->name('user.management');
+
+    Route::get('/users/{id}/details', [UsersController::class, 'details'])->name('user.details');
+    Route::delete('/users/{id}/delete', [UsersController::class, 'delete'])->name('user.delete');
+
+    Route::get('/users/{id}/edit', [UsersController::class, 'edit'])->name('user.edit');
+    Route::put('/users/{id}/update', [UsersController::class, 'update'])->name('user.update');
+
+
+
 });
 
 
