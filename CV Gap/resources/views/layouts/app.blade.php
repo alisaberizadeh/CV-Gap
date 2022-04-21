@@ -40,7 +40,7 @@
                                         <i class="fa fa-user"></i> {{ auth()->user()->name }}
                                     </a>
                                     <div class="dropdown-menu" style="direction: rtl;text-align: right">
-                                        @if (auth()->user()->is_admin == 1)
+                                        @if (auth()->user()->is_admin == 1 || auth()->user()->is_admin == 2)
                                         <a class="dropdown-item" href="{{route('admin.panel')}}"><i class="fa fa-dashboard"></i> داشبورد کاربری</a>
                                         @else
                                         <a class="dropdown-item" href="{{route('user.panel')}}"><i class="fa fa-dashboard"></i> داشبورد کاربری</a>

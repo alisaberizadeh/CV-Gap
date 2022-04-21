@@ -16,9 +16,9 @@ class CreateRecycleBinUsersTable extends Migration
         Schema::create('recycle_bin_users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('email')->unique();
-            $table->string('mobile')->unique();
-            $table->string('username')->unique();
+            $table->string('email');
+            $table->string('mobile');
+            $table->string('username');
             $table->timestamp('email_verified_at')->nullable();
             $table->boolean('is_admin')->nullable();
             $table->string('password');

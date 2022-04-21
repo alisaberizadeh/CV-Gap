@@ -1,5 +1,5 @@
 @extends('wp.layouts.app')
 
 @section('content')
-    hi
+    <h1>پیشخوان</h1>
 @endsection

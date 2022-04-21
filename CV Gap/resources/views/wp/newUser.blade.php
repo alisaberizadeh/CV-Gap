@@ -72,8 +72,14 @@
                                   </div>
                                   <select name="userType" class="form-control @error('userType') is-invalid @enderror" required>
                                     <option value="0"> --- نوع حساب کاربری ---</option>
-                                    <option value="0">کاربر عادی</option>
-                                    <option value="1">مدیر</option>
+                                    @if (auth()->user()->is_admin == 2)
+                                        
+                                        <option value="0">کاربر عادی</option>
+                                        <option value="1">مدیر</option>
+                                        @else
+                                        <option value="0">کاربر عادی</option>
+                                    @endif
+                                    
 
                                   </select>
                               </div>

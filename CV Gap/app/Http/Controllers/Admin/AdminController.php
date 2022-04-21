@@ -32,11 +32,22 @@ class AdminController extends Controller
         ]);
         if (isset($request->avatar)) {
             $avatar = $request->file('avatar');
-            $avatar->move(public_path('images/upload'), date('Y') . '_' . date('M') . '_' . $avatar->getClientOriginalName());
-            $request->avatar = '/images/upload' . '/' . date('Y') . '_' . date('M') . '_' . $avatar->getClientOriginalName();
+            $avatar->move(public_path('images/upload/avatar'), date('Y') . '_' . date('M') . '_' . $avatar->getClientOriginalName());
+            $request->avatar = '/images/upload/avatar' . '/' . date('Y') . '_' . date('M') . '_' . $avatar->getClientOriginalName();
         }
         else if (empty($request->avatar)) {
             $request->avatar = $request->hidden_src;
+        }
+
+        if (isset($request->banner)) {
+            $banner = $request->file('banner');
+            $banner->move(public_path('images/upload/banner'), date('Y') . '_' . date('M') . '_' . $banner->getClientOriginalName());
+            $request->banner = '/images/upload/banner' . '/' . date('Y') . '_' . date('M') . '_' . $banner->getClientOriginalName();
+
+
+        }
+        else if (empty($request->banner)) {
+            $request->banner = $request->hidden_banner;
         }
         $user = User::find($id);
         $user->update([
@@ -46,6 +57,7 @@ class AdminController extends Controller
             "mobile" =>  $request->mobile,
             "username" => $request->username,
             "avatar" => $request->avatar,
+            "banner" => $request->banner,
         ]);
         alert()->success('', 'اطلاعات بروزرسانی شد')->persistent('باشه');
         return redirect()->back();

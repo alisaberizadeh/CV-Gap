@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\User\NormalUserController;
 
@@ -25,7 +26,7 @@ Auth::routes();
 
 
 Route::prefix('admin')->middleware('isAdmin')->group(function () {
-    Route::get('/panel', [AdminController::class, 'index'])->name('admin.panel');
+    Route::get('/', [AdminController::class, 'index'])->name('admin.panel');
     Route::get('/profile', [AdminController::class, 'profile'])->name('admin.profile');
     Route::put('/profile/update/{id}', [AdminController::class, 'update'])->name('admin.update');
 
@@ -39,6 +40,11 @@ Route::prefix('admin')->middleware('isAdmin')->group(function () {
 
     Route::get('/users/{id}/edit', [UsersController::class, 'edit'])->name('user.edit');
     Route::put('/users/{id}/update', [UsersController::class, 'update'])->name('user.update');
+
+
+    Route::get('/categories', [CategoriesController::class, 'index'])->name('categories');
+    Route::post('/categories/new/', [CategoriesController::class, 'create'])->name('categories.create');
+    Route::delete('/categories/{id}/delete', [CategoriesController::class, 'delete'])->name('categories.delete');
 
 
 

@@ -143,6 +143,7 @@ return [
 
     'attributes' => [
         'name'                  => 'نام',
+        'slug'                  => 'نامک',
         'username'              => 'نام کاربری',
         'email'                 => 'ایمیل',
         'first_name'            => 'نام',

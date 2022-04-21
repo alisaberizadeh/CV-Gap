@@ -21,6 +21,7 @@ class RecycleBinUser extends Model
         'avatar',
         'bio',
         'created_at',
+        'banner',
         'updated_at',
     ];
 

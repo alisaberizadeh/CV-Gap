@@ -16,9 +16,9 @@
     <link rel="stylesheet" href="{{ asset('/css/admin/bootstrap-rtl.min.css') }}">
     <script src="{{ asset('/js/jquery-2.1.0.min.js') }}"></script>
     <script src="{{ asset('/js/bootstrap.min.js') }}"></script>
-    <script src="{{ asset('/js/admin/adminlte.min.js') }}"></script>
     <script src="{{ asset('/js/admin/demo.js') }}"></script>
     <script src="{{ asset('/js/app.js') }}"></script>
+    <script src="{{ asset('/js/admin/adminlte.min.js') }}"></script>
 
 </head>
 
@@ -143,9 +143,10 @@
                     </div>
                 </li>
                 <li class="nav-item ">
-                    <a class="nav-link" data-toggle="dropdown" href="#">
+                    <a class="nav-link" onclick="event.preventDefault();document.getElementById('deleteForm').submit()" data-toggle="dropdown" href="/logout">
                         <i class="fa fa-power-off"></i>
                     </a>
+                    <form action="{{route('logout')}}" method="POST" id="deleteForm">@csrf</form>
 
                 </li>
             </ul>
@@ -165,7 +166,15 @@
                                 alt="User Image">
                         </div>
                         <div class="info">
-                            <a href="#" class="d-block">{{ auth()->user()->name }}</a>
+                            <a href="#" class="d-block"><strong>{{ auth()->user()->name }}</strong> <br>
+                            نقش : 
+                            @if (auth()->user()->is_admin == 2)
+                                <strong>مدیر کل </strong>
+                                @else
+                                <strong>مدیر</strong>
+                            @endif
+                            </a>
+                            
                         </div>
                     </div>
 
@@ -212,6 +221,17 @@
                                     </li>
 
                                 </ul>
+                            </li>
+                            
+                            <li class="nav-item has-treeview">
+                                <a href="{{route('categories')}}" class="nav-link">
+                                    <i class="nav-icon fa fa-th"></i>
+                                    <p>
+                                        دسته بندی مقالات
+                                    </p>
+
+                                </a>
+                               
                             </li>
 
                         </ul>

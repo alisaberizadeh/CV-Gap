@@ -45,8 +45,8 @@
 }
 
 *,
-::after,
-::before {
+ ::after,
+ ::before {
     box-sizing: border-box
 }
 
@@ -360,7 +360,7 @@ progress {
     -webkit-appearance: none
 }
 
-::-webkit-file-upload-button {
+ ::-webkit-file-upload-button {
     font: inherit;
     -webkit-appearance: button
 }
@@ -9274,7 +9274,7 @@ html {
 }
 
 .sidebar-dark-primary {
-    background-color: #2f2e36
+    background-color: white;
 }
 
 .sidebar-dark-primary .user-panel a:hover {
@@ -12329,10 +12329,10 @@ label:not(.form-check-label):not(.custom-file-label) {
     border-top-right-radius: .25rem
 }
 
-.widget-user .widget-user-username {
+.widget-user-cover .widget-user-username {
     margin-top: 0;
-    margin-bottom: 5px;
-    font-size: 25px;
+    margin-bottom: 25px;
+    font-size: 50px;
     font-weight: 300;
     text-shadow: 0 1px 1px rgba(0, 0, 0, .2)
 }
@@ -12343,15 +12343,15 @@ label:not(.form-check-label):not(.custom-file-label) {
 
 .widget-user .widget-user-image {
     position: absolute;
-    top: 65px;
-    left: 50%;
+    top: 58%;
+    right: 4%;
     margin-left: -45px
 }
 
 .widget-user .widget-user-image>img {
     width: 90px;
     height: auto;
-    border: 3px solid #fff
+    border: 5px solid #fff
 }
 
 .widget-user .card-footer {
@@ -12907,10 +12907,11 @@ a.text-muted:hover {
 }
 
 .description-block>.description-header {
-    margin: 0;
+    margin: 0 0 7px 0;
     padding: 0;
     font-weight: 600;
-    font-size: 16px
+    font-size: 22px;
+    margin-top: 20px;
 }
 
 .description-block>.description-text {
@@ -24796,10 +24797,10 @@ label:not(.form-check-label):not(.custom-file-label) {
     border-top-left-radius: .25rem;
     border-top-right-radius: .25rem
 }
-.widget-user .widget-user-username {
+.widget-user-cover .widget-user-username {
     margin-top: 0;
-    margin-bottom: 5px;
-    font-size: 25px;
+    margin-bottom: 25px;
+    font-size: 50px;
     font-weight: 300;
     text-shadow: 0 1px 1px rgba(0, 0, 0, .2)
 }
@@ -24808,17 +24809,18 @@ label:not(.form-check-label):not(.custom-file-label) {
 }
 .widget-user .widget-user-image {
     position: absolute;
-    top: 65px;
-    left: 50%;
+    top: 58%;
+    right: 4%;
     margin-left: -45px
 }
 .widget-user .widget-user-image>img {
     width: 90px;
     height: auto;
-    border: 3px solid #fff
+    border: 5px solid #fff
 }
 .widget-user .card-footer {
-    padding-top: 40px
+    padding-top: 40px;
+    background: white;
 }
 .widget-user-2 .widget-user-header {
     padding: 1rem;
@@ -25268,10 +25270,11 @@ a.text-muted:hover {
     margin-bottom: 25px
 }
 .description-block>.description-header {
-    margin: 0;
+    margin: 0 0 7px 0;
     padding: 0;
     font-weight: 600;
-    font-size: 16px
+    font-size: 22px;
+    margin-top: 20px;
 }
 .description-block>.description-text {
     text-transform: uppercase
@@ -25778,4 +25781,68 @@ img.img-circle.elevation-2 {
     direction: ltr;
     -webkit-font-feature-settings: 'liga';
     -webkit-font-smoothing: antialiased;
+}
+.user_banner {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    box-shadow: 0 0 14px white;
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.user_banner img {
+    width: 270px;
+    height: 270px;
+    border-radius: 200px;
+    margin: 30px 40px;
+    border: 5px solid #ffffff;
+    padding: 0px;
+    box-shadow: 0 0 30px #202020;
+}
+.user_banner p {
+    font-size: 50px;
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+.user_banner h4 {
+    font-weight: bold;
+}
+.user_banner_cover {
+    width: 100%;
+    height: auto;
+    background: #00000085;
+    display: flex;
+    align-items: center;
+    border-radius: 10px;
+}
+.nav-sidebar a.nav-link {
+    display: flex;
+    align-items: center;
+}
+.nav-sidebar .nav-link p {
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+.table-striped tr td:last-of-type {
+    border-radius: 0px;
+}
+.table-striped tr td:first-of-type {
+    border-radius: 0px;
+}
+.widget-user-cover {
+    position: absolute;
+    width: 100%;
+    height: 300px;
+    background: #0000008a;
+    top: 0px;
+    right: 0px;
+    border-top-left-radius: 0.25rem;
+    border-top-right-radius: 0.25rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }

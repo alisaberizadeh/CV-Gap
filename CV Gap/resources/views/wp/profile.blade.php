@@ -71,11 +71,26 @@
                                     <div class="custom-file">
                                       <input type="file" class="custom-file-input  @error('avatar') is-invalid @enderror" name="avatar" >
                                       <input type="hidden" value="{{auth()->user()->avatar}}" name="hidden_src">
-                                      <label class="custom-file-label" for="exampleInputFile">تصویر کاربری  </label>
+                                      <label class="custom-file-label" for="exampleInputFile">تصویر پروفایل  </label>
                                     </div>
                                     
                                   </div>
                                   <span style="color: red;margin-top: 7px">@error('avatar') {{$message}} @enderror</span>
+
+                                  
+                            
+                                <div class="input-group col-md-12 mt-4">
+                                    <div class="input-group-append">
+                                        <img src="{{asset(auth()->user()->banner)}} " style="width: 240px;height: 37px;;border-radius: 2px;margin-left: 7px;" alt="">
+                                      </div>
+                                    <div class="custom-file">
+                                      <input type="file" class="custom-file-input  @error('banner') is-invalid @enderror" name="banner" >
+                                      <input type="hidden" value="{{auth()->user()->banner}}" name="hidden_banner">
+                                      <label class="custom-file-label" for="exampleInputFile"> تصویر بنر   ( ابعاد پیشنهادی : 340 × 1070 پیکسل )</label>
+                                    </div>
+                                    
+                                  </div>
+                                  <span style="color: red;margin-top: 7px">@error('banner') {{$message}} @enderror</span>
 
                                   <div class="input-group col-md-12 mt-4">
                                     <div class="input-group-prepend">

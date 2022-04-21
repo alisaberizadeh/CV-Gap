@@ -27,7 +27,7 @@
                         </div>
                         <div class="card-body">
 
-                            <form action="{{route('user.update',$user_data->id)}}" method="post"> @csrf @method('put')
+                            <form action="{{ route('user.update', $user_data->id) }}" method="post"> @csrf @method('put')
                                 <div class="row">
                                     <div class="input-group col-md-12 mt-4">
                                         <div class="input-group-prepend">
@@ -110,17 +110,23 @@
                                             required>
 
                                             @switch($user_data->is_admin)
-                                                @case('1')
-                                                    <option value="1">-- مدیر ---</option>
-                                                    <option value="0">کاربر عادی</option>
-                                                @break
-
                                                 @case('0')
-                                                    <option value="0">--- کاربر عادی ---</option>
-                                                    <option value="1">مدیر</option>
+                                                    @if (auth()->user()->is_admin == 2)
+                                                        <option value="0">--- کاربر عادی ---</option>
+                                                        <option value="1">مدیر</option>
+                                                    @else
+                                                        <option value="0">--- کاربر عادی ---</option>
+                                                    @endif
                                                 @break
 
-                                                @default
+                                                @case('1')
+                                                    @if (auth()->user()->is_admin == 2)
+                                                        <option value="1">--- مدیر ---</option>
+                                                        <option value="0">کاربر عادی</option>
+                                                    @else
+                                                        <option value="1">--- مدیر ---</option>
+                                                    @endif
+                                                @break
                                             @endswitch
 
                                         </select>

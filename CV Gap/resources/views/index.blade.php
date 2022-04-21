@@ -28,8 +28,8 @@
                                 <a style="margin:  0 10px;" href="{{ route('register') }}" class="main-button-slider">عضویت</a>
                             @endguest
                             @auth
-                                @if (auth()->user()->is_admin == 1)
-                                <a href="{{ route('admin.panel') }}" class="main-button-slider">داشبورد کاربری</a>
+                            @if (auth()->user()->is_admin == 1 || auth()->user()->is_admin == 2)
+                            <a href="{{ route('admin.panel') }}" class="main-button-slider">داشبورد کاربری</a>
 
                                 @else
                                 <a href="{{ route('user.panel') }}" class="main-button-slider">داشبورد کاربری</a>

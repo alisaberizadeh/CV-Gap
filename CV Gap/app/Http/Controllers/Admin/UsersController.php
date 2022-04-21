@@ -4,10 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use App\Models\RecycleBinUser;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
-
+ 
 class UsersController extends Controller
 {
     public function new()
@@ -42,18 +42,17 @@ class UsersController extends Controller
         if (isset($_GET['search'])) {
             $search = $_GET['search'];
             $data= User::where('name', 'LIKE', "%$search%")->orWhere('username', 'LIKE', "%$search%")
-            ->orWhere('email', 'LIKE', "%$search%")->orWhere('mobile', 'LIKE', "%$search%")->orWhere('bio', 'LIKE', "%$search%")->orderBy('id','DESC')->get();
-           
+            ->orWhere('email', 'LIKE', "%$search%")->orWhere('mobile', 'LIKE', "%$search%")->orWhere('bio', 'LIKE', "%$search%")->orderBy('id','DESC')->paginate(5);
         }
         else {
-            $data= User::orderBy('id','DESC')->get();
+            $data= User::orderBy('id','DESC')->paginate(5);
         }
         
         return view('wp.managementUser',['data'=>$data]);
     }
     public function details($id)
     {
-        $userDetails = User::find($id);
+        $userDetails = User::where('id',$id)->first();
         return view('wp.detailsUser',['details'=>$userDetails]);
     }
     public function delete($id)
@@ -71,6 +70,7 @@ class UsersController extends Controller
             'bio' => $user_delete->bio ,
             'created_at' => $user_delete->created_at ,
             'updated_at' => $user_delete->updated_at ,
+            'banner' => $user_delete->banner ,
         ]);
         $user_delete->delete();
         alert()->success('', "کاربر با موفقیت حذف شد")->persistent('باشه');
