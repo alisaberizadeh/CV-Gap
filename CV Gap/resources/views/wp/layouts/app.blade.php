@@ -234,6 +234,34 @@
                                
                             </li>
 
+                            
+                            <li class="nav-item has-treeview">
+                                <a href="#" class="nav-link">
+                                    <i class="nav-icon fa fa-file"></i>
+                                    <p>
+                                        بلاگ
+                                        <i class="fa fa-angle-left right"></i>
+                                    </p>
+
+                                </a>
+                                <ul class="nav nav-treeview">
+                                    <li class="nav-item">
+                                        <a href="{{ route('articles.new') }}" class="nav-link">
+                                            <i class="fa fa-genderless nav-icon"></i>
+                                            <p>افزودن مقاله جدید</p>
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="{{ route('articles') }}" class="nav-link">
+                                            <i class="fa fa-genderless nav-icon"></i>
+                                            <p>مدیریت مقالات</p>
+                                        </a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                            
+
                         </ul>
                     </nav>
                 </div>

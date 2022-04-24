@@ -238,3 +238,15 @@ ul {
 .datepicker-plot-area {
     font-family: 'Vazir', sans-serif;
 }
+
+.table td {
+    position: relative;
+}
+
+.table td>i {
+    position: absolute;
+    right: 9px;
+    background: #3a3a3a;
+    border-radius: 9px;
+    padding: 1px;
+}

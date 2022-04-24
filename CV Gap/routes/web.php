@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\ArticleController;
 use App\Http\Controllers\Admin\CategoriesController;
 use App\Http\Controllers\Admin\UsersController;
 use App\Http\Controllers\User\NormalUserController;
@@ -46,6 +47,8 @@ Route::prefix('admin')->middleware('isAdmin')->group(function () {
     Route::post('/categories/new/', [CategoriesController::class, 'create'])->name('categories.create');
     Route::delete('/categories/{id}/delete', [CategoriesController::class, 'delete'])->name('categories.delete');
 
+    Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
+    Route::get('/articles/new', [ArticleController::class, 'new'])->name('articles.new');
 
 
 });
