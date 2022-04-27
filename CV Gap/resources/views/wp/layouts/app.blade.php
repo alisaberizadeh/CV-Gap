@@ -19,6 +19,7 @@
     <script src="{{ asset('/js/admin/demo.js') }}"></script>
     <script src="{{ asset('/js/app.js') }}"></script>
     <script src="{{ asset('/js/admin/adminlte.min.js') }}"></script>
+    <script src="{{ asset('/js/ckeditor/ckeditor.js') }}"></script>
 
 </head>
 

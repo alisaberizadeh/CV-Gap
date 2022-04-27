@@ -49,6 +49,7 @@ Route::prefix('admin')->middleware('isAdmin')->group(function () {
 
     Route::get('/articles', [ArticleController::class, 'index'])->name('articles');
     Route::get('/articles/new', [ArticleController::class, 'new'])->name('articles.new');
+    Route::post('/articles/new/', [ArticleController::class, 'create'])->name('articles.create');
 
 
 });
